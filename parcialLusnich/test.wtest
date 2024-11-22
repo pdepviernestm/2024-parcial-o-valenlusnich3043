@@ -1,0 +1,12 @@
+import persona.*
+describe "test para el punto 6" {
+  test "grupo de personas ven un accidente vehicular fatal" {
+    const jorge = new Persona(edad = 10, emociones = #{desagrado, alegria}, emocionActiva = desagrado)
+    const mica = new Persona(edad = 12, emociones = #{tristeza}, emocionActiva = tristeza)
+    const grupito = new GrupoPersonas(grupo = #{jorge, mica})
+    const choque = new Evento(impacto = 20, descripcion = "hubo tremendo choque saliendo de la escuela")
+    grupito.vivirEvento(choque)
+    assert.equals(201, jorge.emocionActiva().cantEventos()) //LE SUMA UN EVENTO MAS A LA CANTIDAD DE EVENTOS DE JORGE
+    assert.equals(80, mica.emocionActiva().intensidad()) //LE BAJA 20 PUNTOS DE ANSIEDAD A MICA
+  }
+}   
